@@ -1,0 +1,14 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# PyCharm
+.idea/
+
+# For mac
+.DS_Store
+
+.idea
+
+# 01_intro_to_cnn directory ignore files
+/examples/01_intro_to_cnn/logs
+/examples/01_intro_to_cnn/.venv
