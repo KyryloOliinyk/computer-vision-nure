@@ -1,13 +1,15 @@
-# Byte-compiled / optimized / DLL files
+# Python cache
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
 
-# PyCharm
+# IDE/Editor specific
 .idea/
+.vscode/
 
 # For mac
 .DS_Store
-
-.idea
 
 # 01_intro_to_cnn directory ignore files
 /examples/01_intro_to_cnn/logs
