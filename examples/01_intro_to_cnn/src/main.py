@@ -20,7 +20,7 @@ def plot_image(predictions, label, img, class_names):
 def plot_value_array(predictions, label):
     plt.grid(False)
     plt.xticks(range(len(predictions)))
-    plt.yticks(np.arange(0, 1, step=0.2))
+    plt.yticks(np.arange(0, 1, step=0.1))
     plt.ylim([0, 1])
     bars = plt.bar(range(len(predictions)), predictions, color="#777777")
 
@@ -29,7 +29,7 @@ def plot_value_array(predictions, label):
     bars[label].set_color('blue')
 
 
-def plot_images_labels_predictions(images, labels, predictions, class_names, num_rows=5, num_cols=3):
+def plot_predictions(images, labels, predictions, class_names, num_rows=5, num_cols=3):
     plt.figure(figsize=(4 * num_cols, 2 * num_rows))
     num_images = num_rows * num_cols
     for i in range(num_images):
@@ -69,5 +69,5 @@ if __name__ == '__main__':
     print(f"Test loss: {test_loss:.4f}")
     print(f"Test accuracy: {test_acc:.4f}")
 
-    test_predictions = classificator.predict(prepared_test_images)
-    plot_images_labels_predictions(test_images, test_labels, test_predictions, classificator.class_names)
+    predictions = classificator.predict(prepared_test_images)
+    plot_predictions(test_images, test_labels, predictions, classificator.class_names)
