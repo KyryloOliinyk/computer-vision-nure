@@ -3,8 +3,8 @@
 ## 1. Clone the Repository
 
 ```bash
-git clone https://github.com/CyrilOleynik/ObjectDetectionTF.git
-cd ObjectDetectionTF
+git clone https://github.com/KyryloOliinyk/computer-vision-nure.git
+cd examples/02_object_detection_tf
 ```
 
 ## 2. Create Conda Environment
