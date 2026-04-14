@@ -1,3 +1,6 @@
+![Python](https://img.shields.io/badge/python-3.12-blue)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.16-orange)
+
 # Introduction into CNN
 
 This project implements a Convolutional Neural Network (CNN) using TensorFlow

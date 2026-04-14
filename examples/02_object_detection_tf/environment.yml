@@ -1,0 +1,28 @@
+name: ObjectDetection
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pip
+  - cython=0.29.36
+  - numpy=1.21.6
+  - libclang=13.0.0
+  - lxml
+  - protobuf=3.19.6
+  - pip:
+      - tensorflow==2.10.0
+      - keras==2.10.0
+      - keras-preprocessing>=1.1.1
+      - tensorflow-io==0.27.0
+      - tf-slim
+      - pycocotools
+      - lvis
+      - opencv-python==4.5.2.54
+      - contextlib2
+      - tf-models-official==2.10.0
+      - apache-beam==2.42.0
+      - avro-python3==1.10.2
+      - pyparsing==2.4.7
+      - labelImg
+      - absl-py
