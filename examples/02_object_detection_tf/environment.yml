@@ -1,4 +1,4 @@
-name: ObjectDetection
+name: object-detection-tf
 channels:
   - defaults
   - conda-forge

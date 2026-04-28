@@ -15,7 +15,7 @@ Refer to [the docs](https://docs.conda.io/en/latest/) section if you need help.
 
 ```bash 
 conda env create -f environment.yml
-conda activate ObjectDetection
+conda activate object-detection-tf
 ```
 
 This installs all required packages including TensorFlow, Protobuf, etc.
