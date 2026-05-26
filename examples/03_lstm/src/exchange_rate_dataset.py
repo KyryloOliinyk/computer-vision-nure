@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 from sklearn.preprocessing import MinMaxScaler
 
@@ -16,7 +17,8 @@ class ExchangeRateDataset:
         return self.scaled_data
 
     def inverse_scale(self, data):
-        return self.scaler.inverse_transform(data)
+        """return self.scaler.inverse_transform(data).flatten()"""
+        return self.scaler.inverse_transform(data.reshape(-1, 1)).flatten()
 
     def get_raw_data(self):
         return self.df

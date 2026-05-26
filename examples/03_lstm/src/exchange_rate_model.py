@@ -1,9 +1,9 @@
 import datetime
-from pathlib import Path
-from typing import Tuple, List, Optional
-
 import keras
 import numpy as np
+
+from pathlib import Path
+from typing import Tuple, List, Optional
 
 
 class ExchangeRateModelLSTM:
@@ -14,9 +14,9 @@ class ExchangeRateModelLSTM:
     def _create_model_architecture(input_shape: Tuple[int, int]) -> keras.Sequential:
         return keras.Sequential([
             keras.Input(shape=input_shape, name="window_data"),
-            keras.layers.LSTM(20, return_sequences=True),
+            keras.layers.LSTM(64, return_sequences=True),
             keras.layers.Dropout(0.2),
-            keras.layers.LSTM(10),
+            keras.layers.LSTM(32),
             keras.layers.Dropout(0.2),
             keras.layers.Dense(1)
         ])
@@ -24,14 +24,16 @@ class ExchangeRateModelLSTM:
     def compile_model(
             self,
             input_shape: Tuple[int, int],
+            learning_rate: float = 1e-3,
             plot_architecture: bool = True,
             show_summary: bool = True) -> None:
         if self.model is None:
             self.model = self._create_model_architecture(input_shape)
 
         self.model.compile(
-            optimizer=keras.optimizers.SGD(momentum=0.9),
-            loss=keras.losses.MeanSquaredError()
+            optimizer=keras.optimizers.Adam(learning_rate),
+            loss=keras.losses.MeanSquaredError(),
+            metrics=[keras.metrics.MeanAbsoluteError(name="mae")],
         )
 
         if show_summary:
@@ -68,7 +70,7 @@ class ExchangeRateModelLSTM:
     def _plot_model_architecture(self) -> None:
         keras.utils.plot_model(
             self.model,
-            "model_architecture.png",
+            "../docs/model_architecture.png",
             show_shapes=True,
             show_dtype=True,
             show_layer_names=True,
@@ -91,7 +93,7 @@ class ExchangeRateModelLSTM:
         ]
 
         if enable_tensorboard:
-            log_dir = tensorboard_log_dir or f"logs/train/{datetime.datetime.now().strftime('%Y_%m_%d-%H%M%S')}"
+            log_dir = tensorboard_log_dir or f"../logs/train/{datetime.datetime.now().strftime('%Y_%m_%d-%H%M%S')}"
             callbacks.append(keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1))
 
         return callbacks
